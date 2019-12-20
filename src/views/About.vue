@@ -73,8 +73,8 @@ export default {
 
         // Add/remove items bindings.
         this.gridElement.addEventListener("click", function(e) {
-          if (elementMatches(e.target, ".card-remove, .card-remove i")) {
-            this.removeItem(e);
+          if (vm.elementMatches(e.target, ".card-remove, .card-remove i")) {
+            vm.removeItem(e);
           }
         });
       });
@@ -82,6 +82,7 @@ export default {
 
     initGrid() {
       var dragCounter = 0;
+      const vm = this;
 
       this.grid = new Muuri(this.gridElement, {
         // items: generateElements(20),
@@ -93,7 +94,7 @@ export default {
         dragContainer: document.body,
         dragStartPredicate: function(item, event) {
           var isDraggable = true; //sortFieldValue === "order";
-          var isRemoveAction = elementMatches(
+          var isRemoveAction = vm.elementMatches(
             event.target,
             ".card-remove, .card-remove i"
           );
@@ -106,27 +107,28 @@ export default {
       })
         .on("dragStart", function() {
           ++dragCounter;
-          this.docElem.classList.add("dragging");
+          vm.docElem.classList.add("dragging");
         })
         .on("dragEnd", function() {
           if (--dragCounter < 1) {
-            this.docElem.classList.remove("dragging");
+            vm.docElem.classList.remove("dragging");
           }
         })
-        .on("move", this.updateIndices);
+        .on("move", vm.updateIndices);
     },
 
     removeItem(e) {
-      var elem = elementClosest(e.target, ".item");
-      grid.hide(elem, {
+      var elem = this.elementClosest(e.target, ".item");
+      const vm = this;
+      this.grid.hide(elem, {
         onFinish: function(items) {
           var item = items[0];
-          this.grid.remove(item, { removeElements: true });
+          vm.grid.remove(item, { removeElements: true });
           // if (sortFieldValue !== "order") {
           {
-            var itemIndex = this.dragOrder.indexOf(item);
+            var itemIndex = vm.dragOrder.indexOf(item);
             if (itemIndex > -1) {
-              this.dragOrder.splice(itemIndex, 1);
+              vm.dragOrder.splice(itemIndex, 1);
             }
           }
         }
@@ -171,13 +173,13 @@ export default {
 
     elementClosest(element, selector) {
       if (window.Element && !Element.prototype.closest) {
-        var isMatch = elementMatches(element, selector);
+        var isMatch = this.elementMatches(element, selector);
         while (!isMatch && element && element !== document) {
           element = element.parentNode;
           isMatch =
             element &&
             element !== document &&
-            elementMatches(element, selector);
+            this.elementMatches(element, selector);
         }
         return element && element !== document ? element : null;
       } else {
