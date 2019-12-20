@@ -67,14 +67,13 @@ export default {
       }
       this.toolList = [...newList];
 
-      const vm = this;
-      vm.$nextTick(() => {
+      this.$nextTick(() => {
         this.initGrid();
 
         // Add/remove items bindings.
-        this.gridElement.addEventListener("click", function(e) {
-          if (vm.elementMatches(e.target, ".card-remove, .card-remove i")) {
-            vm.removeItem(e);
+        this.gridElement.addEventListener("click", e => {
+          if (this.elementMatches(e.target, ".card-remove, .card-remove i")) {
+            this.removeItem(e);
           }
         });
       });
@@ -82,7 +81,6 @@ export default {
 
     initGrid() {
       var dragCounter = 0;
-      const vm = this;
 
       this.grid = new Muuri(this.gridElement, {
         // items: generateElements(20),
@@ -92,9 +90,9 @@ export default {
         dragEnabled: true,
         dragSortInterval: 50,
         dragContainer: document.body,
-        dragStartPredicate: function(item, event) {
+        dragStartPredicate: (item, event) => {
           var isDraggable = true; //sortFieldValue === "order";
-          var isRemoveAction = vm.elementMatches(
+          var isRemoveAction = this.elementMatches(
             event.target,
             ".card-remove, .card-remove i"
           );
@@ -105,31 +103,27 @@ export default {
         dragReleaseDuration: 400,
         dragReleseEasing: "ease"
       })
-        .on("dragStart", function() {
+        .on("dragStart", () => {
           ++dragCounter;
-          vm.docElem.classList.add("dragging");
+          this.docElem.classList.add("dragging");
         })
-        .on("dragEnd", function() {
+        .on("dragEnd", () => {
           if (--dragCounter < 1) {
-            vm.docElem.classList.remove("dragging");
+            this.docElem.classList.remove("dragging");
           }
         })
-        .on("move", vm.updateIndices);
+        .on("move", this.updateIndices);
     },
 
     removeItem(e) {
       var elem = this.elementClosest(e.target, ".item");
-      const vm = this;
       this.grid.hide(elem, {
-        onFinish: function(items) {
+        onFinish: items => {
           var item = items[0];
-          vm.grid.remove(item, { removeElements: true });
-          // if (sortFieldValue !== "order") {
-          {
-            var itemIndex = vm.dragOrder.indexOf(item);
-            if (itemIndex > -1) {
-              vm.dragOrder.splice(itemIndex, 1);
-            }
+          this.grid.remove(item, { removeElements: true });
+          var itemIndex = this.dragOrder.indexOf(item);
+          if (itemIndex > -1) {
+            this.dragOrder.splice(itemIndex, 1);
           }
         }
       });
