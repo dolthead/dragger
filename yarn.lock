@@ -4900,6 +4900,11 @@ gzip-size@^5.0.0:
     duplexer "^0.1.1"
     pify "^4.0.1"
 
+hammerjs@^2.0.0, hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
+
 handle-thing@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
@@ -6198,6 +6203,11 @@ jest@^24.9.0:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
 
+jquery@^3.2.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
+
 js-base64@^2.1.8:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
@@ -7113,6 +7123,19 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
+
+muuri@^0.4.0:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/muuri/-/muuri-0.4.1.tgz#c63b274d10640f26b7ef279da37b68c0f7c72230"
+  integrity sha512-PX1sXKaOiVpAaVwGNmrcZA1ueWmFzTVj+z+G0o+uqtaSrxNWgBMr4dTGSsPSwIEjAOiqzuUi/g2ghjjLRkgn7g==
+  dependencies:
+    hammerjs "^2.0.0"
+    velocity-animate "^1.2.0"
+
+muuri@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/muuri/-/muuri-0.8.0.tgz#60e84d2d322fa207efd113905eeb5d9750005a53"
+  integrity sha512-uqTi91q6mEKfHNHutlcDu3dS8/DXnxoWFh6fhUVJr426yaO4G/p2/LMoOeFb5Tl1hWzx7qoxl2v9RTJVFuskpQ==
 
 mz@^2.4.0:
   version "2.7.0"
@@ -10409,6 +10432,16 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
+velocity-animate@^1.2.0:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/velocity-animate/-/velocity-animate-1.5.2.tgz#5a351d75fca2a92756f5c3867548b873f6c32105"
+  integrity sha512-m6EXlCAMetKztO1ppBhGU1/1MR3IiEevO6ESq6rcrSQ3Q77xYSW13jkfXW88o4xMrkXJhy/U7j4wFR/twMB0Eg==
+
+velocityjs@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/velocityjs/-/velocityjs-0.9.6.tgz#6ec82e99aa27492d2d62360c161afc4f82db89e2"
+  integrity sha1-bsgumaonSS0tYjYMFhr8T4LbieI=
+
 vendors@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.3.tgz#a6467781abd366217c050f8202e7e50cc9eef8c0"
@@ -10476,6 +10509,16 @@ vue-loader@^15.7.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-muuri@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vue-muuri/-/vue-muuri-0.1.2.tgz#90121aede73bd92888148ef15dd334532554b640"
+  integrity sha1-kBIa7ec72SiIFI7xXdM0UyVUtkA=
+  dependencies:
+    hammerjs "^2.0.8"
+    jquery "^3.2.1"
+    muuri "^0.4.0"
+    velocityjs "^0.9.6"
 
 vue-property-decorator@^8.3.0:
   version "8.3.0"
